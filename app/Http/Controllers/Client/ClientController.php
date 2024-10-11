@@ -57,7 +57,7 @@ class ClientController extends Controller
         $client_segment_id = $request->get("client_segment_id");
         $type = $request->get("type");
         $asesor_id = $request->get("asesor_id");
-        
+
         $clients = Client::filterAdvance($search,$client_segment_id,$type,$asesor_id)->orderBy("id","desc")->get();
         return Excel::download(new ExportClient($clients),"clientes_descargados.xlsx");
     }
